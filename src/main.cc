@@ -1,11 +1,12 @@
 #include <SFML/Graphics.hpp>
-#include <Chart.h>
+#include "header/Chart.h"
+#include <string>
 
 using namespace std;
 
 int main()
 {
-   sf::RenderWindow window(sf::VideoMode(800, 800), "pacMan");
+  sf::RenderWindow window(sf::VideoMode(800, 800), "pacMan");
 
    while (window.isOpen())
    {
@@ -16,6 +17,6 @@ int main()
             window.close();
       }
       window.display();
-   }
+      }
    return 0;
 }
