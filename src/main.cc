@@ -1,5 +1,5 @@
 #include <SFML/Graphics.hpp>
-#include "header/Chart.h"
+#include "Chart.h"
 #include <string>
 
 using namespace std;
