@@ -1,6 +1,35 @@
 # Visual studio files
 *.vcxpro*
 
+# Ignore all
+*
+# Unignore all with extensions
+!*.*
+
+# Unignore Makefile
+!makefile
+
+# Unignore all dirs
+!*/
+
+# Ignore files with extension 
+*#
+#*
+*~
+*.o
+
+# Ignore `bin` dir
+bin/
+# or
+*/bin/*
+
+#Ignore ~files
+src/*~*
+src/a.out
+src/#*
+src/*#
+src/.*
+
 # Prerequisites
 *.d
 
