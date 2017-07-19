@@ -13,7 +13,9 @@ int main()
   window.setFramerateLimit(30);
   
   Chart chart;
-  Keymanager key;
+  //Keymanager key;
+
+  chart.init();
    while (window.isOpen())
    {
       //Event handler
@@ -27,7 +29,7 @@ int main()
             window.close();
          case sf::Event::KeyPressed:
             // cout << "Keypressed: " << static_cast<char>(event.key.code + 65) << endl;
-            key.update(event.key.code);
+            Keymanager::update(event.key.code);
          default:
             ;
          }

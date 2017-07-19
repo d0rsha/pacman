@@ -4,30 +4,30 @@
 
 using namespace std;
 Chart::Chart()
-   : pellets_map{}, points_map{}, fruits_map{}, list{}, pacman(&list)
+   : pellets_map{}, points_map{}, fruits_map{}, list{}, pacman(&list), text{}
 {}
 
 void Chart::init()
 {
-   sf::Texture text;
    cout << "Loading texture...\n";
    if (!text.loadFromFile("texture/spritesheet.jpg")) throw logic_error("Texture missing \n");
-   cout << "Initialize sprites...\n";
+   cout << "Initialize sprites... ";
    for ( auto & item : list)
    {
       item->setSprite(text);
+      cout << item->name << " , ";
    }
+   cout << "\b\b  \n";
    cout << "Creating map...\n";
    
    cout << "Setting player position...\n";
-   pacman.setPos(100,100);
-
-//Test
-   list.push_back(new Entity{&list, sf::Vector2f(0, 64), sf::Vector2i(100, 100)});
+   pacman.setPos(400,400);
 }
 
 void Chart::update()
 {
+   // pacman.setKeys(Keymanager::getKey());
+
    for ( auto & item : list )
    {
       item->update();

@@ -5,6 +5,7 @@
 #include <SFML/Window.hpp>
 #include "Entity.h"
 #include "Pacman.h"
+#include "Keymanager.h"
 
 #include <map>
 #include <list>
@@ -22,6 +23,7 @@ private:
    std::map<sf::Vector2i, bool> fruits_map;
    std::list<Entity*> list;
    Pacman pacman;
+   sf::Texture text;
 };
 
 #endif

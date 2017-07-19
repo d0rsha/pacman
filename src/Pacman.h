@@ -13,7 +13,7 @@ class Pacman : public Animation
 public:
    Pacman(std::list<Entity*>* list);
    virtual void update() final;
-   void setKeys(Keymanager);
+   void setKeys();
    void setPos(int x, int y);
 
 private:

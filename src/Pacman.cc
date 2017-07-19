@@ -5,31 +5,32 @@ using namespace std;
 Pacman::Pacman(list<Entity*>* list)
    :Animation(list, sf::Vector2i(0, 0), 2)
 {
-
+   Animation::Entity::rect.setFillColor(sf::Color::Magenta);
 }
 
 void Pacman::update()
 {
+   setKeys();
    Animation::update();
 }
 
-void Pacman::setKeys(Keymanager key)
+void Pacman::setKeys()
 {
-   if (key.getKey() == sf::Keyboard::Key::Right)
+   if (Keymanager::getKey() == sf::Keyboard::Key::Right)
    {
-      Animation::direction = sf::Vector2f(1,0);
+      Animation::direction = sf::Vector2f(1, 0);
    }
-   if (key.getKey() == sf::Keyboard::Key::Up)
+   if (Keymanager::getKey() == sf::Keyboard::Key::Up)
    {
-      Animation::direction = sf::Vector2f(0,1);
+      Animation::direction = sf::Vector2f(0, -1);
    }
-   if (key.getKey() == sf::Keyboard::Key::Left)
+   if (Keymanager::getKey() == sf::Keyboard::Key::Left)
    {
-      Animation::direction = sf::Vector2f(-1,0);
+      Animation::direction = sf::Vector2f(-1, 0);
    }
-   if (key.getKey() == sf::Keyboard::Key::Down)
+   if (Keymanager::getKey() == sf::Keyboard::Key::Down)
    {
-      Animation::direction = sf::Vector2f(0,-1);
+      Animation::direction = sf::Vector2f(0, 1);
    }
 }
 
