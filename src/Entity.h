@@ -17,14 +17,22 @@ public:
          sprite.setPosition(cord);
          sprite.setTextureRect(sf::IntRect{sf::Vector2i(0, 0), size});
          list->push_back(this);
+         rect.setFillColor(sf::Color::Red);
       }
    void draw(sf::RenderWindow* window)
       {
          window->draw(sprite);
+         window->draw(rect);
       }
    void setSprite(sf::Texture text)
       {
          sprite.setTexture(text);
+      }
+   sf::Vector2f getPosition()
+   /** return center of circle **/
+      {
+         return sf::Vector2f(rect.getPosition().x + rect.getGlobalBounds().width/2, 
+                             rect.getPosition().y + rect.getGlobalBounds().width/2);
       }
    virtual void update()
       {}
