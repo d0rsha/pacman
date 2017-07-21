@@ -5,19 +5,23 @@
 #include <string>
 #include <iostream>
 
+// Sprite size
 #define SPRITE_SIZE_X 20
 #define SPRITE_SIZE_Y 20
 
+// Movement speed
+#define PACMAN_SPEED 1
+#define BOT_SPEED 1
 
 class Entity
 {
 public:
    virtual ~Entity() {}
-   Entity(std::list<Entity*>* list, sf::Vector2f cord, sf::Vector2i size, std::string name = "UNDEFINED")
-      :name{name}, rect{sf::Vector2f(size.x+1, size.y+1)}, sprite{}
+   Entity(std::list<Entity*>* list,  sf::IntRect textureBox, sf::Vector2i s = sf::Vector2i(SPRITE_SIZE_X, SPRITE_SIZE_Y), std::string name = "UNDEFINED")
+      :name{name}, rect{sf::Vector2f((textureBox.width - textureBox.left)/s.x, 
+                                     (textureBox.height - textureBox.top)/s.y)}, sprite{}, size{s}
       {
-         sprite.setPosition(cord);
-         sprite.setTextureRect(sf::IntRect{sf::Vector2i(5, 0), size});
+         sprite.setTextureRect(sf::IntRect{textureBox.left, textureBox.top, s.x, s.y});
          list->push_back(this);
          rect.setFillColor(sf::Color::Red);
       }
@@ -36,6 +40,10 @@ public:
          return sf::Vector2f(rect.getPosition().x + rect.getGlobalBounds().width/2, 
                              rect.getPosition().y + rect.getGlobalBounds().width/2);
       }
+   void setPosition(sf::Vector2f pos)
+      {
+         rect.setPosition(pos);
+      }
    virtual void update()
       {}
 
@@ -43,6 +51,7 @@ public:
 protected:
    sf::RectangleShape rect;
    sf::Sprite sprite;
+   sf::Vector2i size;
 private:
    
 };

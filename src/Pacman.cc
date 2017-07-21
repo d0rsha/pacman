@@ -3,7 +3,7 @@
 using namespace std;
 
 Pacman::Pacman(list<Entity*>* list)
-   :Animation(list, sf::Vector2i(0, 0), 2)
+   :Animation(list, sf::IntRect(80, 0, 80, 20))
 {
    Animation::Entity::rect.setFillColor(sf::Color::Magenta);
 }
@@ -36,5 +36,5 @@ void Pacman::setKeys()
 
 void Pacman::setPos(int x, int y)
 {
-   Animation::Entity::rect.setPosition(sf::Vector2f(x,y));
+   Animation::Entity::setPosition(sf::Vector2f(x,y));
 }
