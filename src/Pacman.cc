@@ -3,7 +3,7 @@
 using namespace std;
 
 Pacman::Pacman(list<Entity*>* list)
-   :Animation(list, sf::IntRect(80, 0, 80, 20))
+   :Animation(list, sf::IntRect(0, 0, 60, 20))
 {
    Animation::Entity::rect.setFillColor(sf::Color::Magenta);
 }

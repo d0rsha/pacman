@@ -19,6 +19,7 @@ protected:
    sf::Vector2f direction{-1, 0};
 private:
    void setSprite(sf::IntRect textureBox);
+   void moveTextureRect();
    sf::Vector2i sheetCoordinate; // Coordinate on spritesheet
    bool alive{true};
    int animation_it_limit; //Max animation iterations
