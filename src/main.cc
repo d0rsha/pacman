@@ -14,8 +14,9 @@ int main()
   
   Chart chart;
   //Keymanager key;
-
   chart.init();
+  bool focus{true};
+  
    while (window.isOpen())
    {
       //Event handler
@@ -35,10 +36,12 @@ int main()
          }
          if (event.type == sf::Event::LostFocus) {
             ;//Pause game
+           focus = false;
             cout << "Game paused\n";
          }
          if ( event.type == sf::Event::GainedFocus) {
             ;// Resume game
+           focus = true;
             cout << "Game resumed\n";
          }
          if (event.type == sf::Event::Resized) {
@@ -52,9 +55,12 @@ int main()
       }
       // Clear screen
       window.clear(sf::Color::Black);
-
+    
+     if (focus)
+     {
       // Update stuff
       chart.update();
+     }
       // Draw stuff
       chart.draw(&window);
       // Display stuff
