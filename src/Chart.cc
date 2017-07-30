@@ -10,7 +10,7 @@ Chart::Chart()
 void Chart::init()
 {
    cout << "Loading texture...\n";
-   if (!text.loadFromFile("texture/spritesheet.jpg")) throw logic_error("Texture missing \n");
+   if (!text.loadFromFile("texture/spritesheet.png")) throw logic_error("Texture missing \n");
    cout << "Initialize sprites... ";
    for ( auto & item : list)
    {
@@ -26,8 +26,6 @@ void Chart::init()
 
 void Chart::update()
 {
-   // pacman.setKeys(Keymanager::getKey());
-
    for ( auto & item : list )
    {
       item->update();

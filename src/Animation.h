@@ -16,9 +16,9 @@ public:
    Animation(std::list<Entity*>* list, sf::IntRect textureBox);
    virtual void update() override;
 protected:
-   sf::Vector2f direction{-1, 0};
-private:
+   sf::Vector2f direction{0, 0};
    void setSprite(sf::IntRect textureBox);
+private:
    void moveTextureRect();
    sf::Vector2i sheetCoordinate; // Coordinate on spritesheet
    bool alive{true};

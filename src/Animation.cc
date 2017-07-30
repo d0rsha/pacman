@@ -17,7 +17,7 @@ void Animation::update()
 // Set sprite
    Entity::sprite.setPosition(Entity::rect.getPosition());
    counter++;
-   if (counter > 5) 
+   if (counter > 2) 
    {
       counter = 0; 
       moveTextureRect();
@@ -29,7 +29,7 @@ void Animation::setSprite(sf::IntRect textureBox)
    sheetCoordinate = sf::Vector2i(textureBox.left, textureBox.top);
    if (textureBox.width  > Entity::size.x)
    {
-      animation_it_limit = textureBox.width/Entity::size.x +1; 
+      animation_it_limit = textureBox.width/Entity::size.x; 
       horizontal = true;
    }
    else if (textureBox.height > Entity::size.y)
@@ -39,7 +39,6 @@ void Animation::setSprite(sf::IntRect textureBox)
    }
    else
       throw std::logic_error("Animation bouinding box must contain multiply sprites, setSprite(sf::IntRect )\n");
-   
    ani_counter = 1;
    Entity::sprite.setTextureRect(sf::IntRect{sheetCoordinate, Entity::size});
 }
@@ -47,18 +46,20 @@ void Animation::setSprite(sf::IntRect textureBox)
 void Animation::moveTextureRect()
 {
      // Set new coordinate for sheetCoordinate
-   switch ((int)horizontal) {
-      case true: Entity::sprite.setTextureRect(sf::IntRect(sheetCoordinate + sf::Vector2i(Entity::size.x * ani_counter, sheetCoordinate.y  ), Entity::size));
-      case false: Entity::sprite.setTextureRect(sf::IntRect(sheetCoordinate + sf::Vector2i(sheetCoordinate.x , Entity::size.y * ani_counter), Entity::size));
-      }
+   if (horizontal) {
+      Entity::sprite.setTextureRect(sf::IntRect(sheetCoordinate + sf::Vector2i(Entity::size.x * ani_counter, 0), Entity::size));
+   }
+   else {
+      Entity::sprite.setTextureRect(sf::IntRect(sheetCoordinate + sf::Vector2i(0 , Entity::size.y * ani_counter), Entity::size));
+   }
+   ani_counter++;
 
-      if (ani_counter >= animation_it_limit)
-      {
-         switch ((int)horizontal){
-         case true: setSprite(sf::IntRect(sheetCoordinate, sf::Vector2i(Entity::size.x * animation_it_limit, Entity::size.y)));
-         case false: setSprite(sf::IntRect(sheetCoordinate, sf::Vector2i(Entity::size.x, Entity::size.y * animation_it_limit)));               
-         }
-      }
-      cout << ani_counter << endl;
-      ani_counter++;
+   if (ani_counter > animation_it_limit)
+   {
+      if (horizontal)
+         setSprite(sf::IntRect(sheetCoordinate, sf::Vector2i(Entity::size.x * animation_it_limit, Entity::size.y)));
+      else
+         setSprite(sf::IntRect(sheetCoordinate, sf::Vector2i(Entity::size.x, Entity::size.y * animation_it_limit)));               
+   }
+      
 }
