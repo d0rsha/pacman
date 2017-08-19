@@ -6,6 +6,7 @@
 #include "Entity.h"
 #include "Pacman.h"
 #include "Keymanager.h"
+#include "Powerup.h"
 
 #include <map>
 #include <list>
@@ -18,9 +19,11 @@ public:
    void update();
    void draw(sf::RenderWindow* window);
 private:
-   std::map<sf::Vector2i, bool> pellets_map;
-   std::map<sf::Vector2i, bool> points_map;
-   std::map<sf::Vector2i, bool> fruits_map;
+   std::map<sf::Vector2f, Powerup> powerup_map;
+   
+   std::vector<sf::Vector2f> wall_vector_cord;
+   
+
    std::list<Entity*> list;
    Pacman pacman;
    sf::Texture text;

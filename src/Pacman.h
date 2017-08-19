@@ -16,6 +16,8 @@ public:
    void setKeys();
    void setPos(int x, int y);
 
+   // sf::Vector2f getPos() const { return Entity::getPosition(); }
+   bool check(sf::Vector2f p) const { return Entity::getPosition() == p;} 
 private:
 
 };

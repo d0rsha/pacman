@@ -4,7 +4,7 @@
 
 using namespace std;
 Chart::Chart()
-   : pellets_map{}, points_map{}, fruits_map{}, list{}, pacman(&list), text{}
+   : powerup_map{}, wall_vector_cord{}, list{}, pacman(&list), text{}
 {}
 
 void Chart::init()

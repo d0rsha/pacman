@@ -12,7 +12,7 @@
 class Animation : public Entity
 {
 public:
-   virtual ~Animation() {}
+   virtual ~Animation() {
    Animation(std::list<Entity*>* list, sf::IntRect textureBox);
    virtual void update() override;
 protected:
